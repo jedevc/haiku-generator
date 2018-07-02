@@ -95,7 +95,7 @@ def syllables(phrase):
             pron = pronunciations[word][0]
             count += len([l for l in pron if l[0] in 'AEIOU'])
         except KeyError:
-            count += len([p for p in re.split('[aeiou]', word) if p]) - 1
+            count += len([p for p in re.split('[aeiou]', word) if p])
 
     return count
 
