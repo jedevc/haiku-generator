@@ -35,7 +35,8 @@ class Haiku {
     do {
       ln = this.line()
     } while (ln.syllables != syllables)
-    return ln.text
+
+    return ln.text[0].toUpperCase() + ln.text.slice(1)
   }
 
   line() {

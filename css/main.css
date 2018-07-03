@@ -16,6 +16,6 @@ body {
   font-family: cursive;
 }
 
-#main::first-letter {
+#main .line::first-letter {
   font-size: 140%;
 }
