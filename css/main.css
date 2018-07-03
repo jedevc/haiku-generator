@@ -26,3 +26,22 @@ body {
 #main .line::first-letter {
   font-size: 140%;
 }
+
+footer {
+  position: absolute;
+  bottom: 0.2em;
+
+  color: darkgrey;
+
+  font-family: sans-serif;
+  font-size: 0.8em;
+}
+
+footer a {
+  color: grey;
+  text-decoration: none;
+}
+
+footer a:visited {
+  color: grey;
+}
