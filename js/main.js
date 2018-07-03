@@ -1,5 +1,6 @@
 const noun = require('../words/nouns.txt').split('\n')
 const adjective = require('../words/adjectives.txt').split('\n')
+const verb = require('../words/verbs.txt').split('\n')
 
 const nlp = require('compromise')
 
@@ -61,12 +62,20 @@ class Haiku {
 
   line() {
     const n = Math.random()
-    if (n < 0.5) {
+    if (n < 0.3) {
       return this.noun()
-    } else if (n < 0.75) {
+    } else if (n < 0.4) {
       return this.noun().list(this.noun())
-    } else if (n < 1) {
+    } else if (n < 0.5) {
       return this.noun().list(this.noun().list(this.noun()))
+    } else if (n < 1) {
+      let verb = this.verb()
+      let past = nlp(verb.text).verbs().toPastTense().out('text')
+      if (past) {
+        verb.text = past
+        if (verb.text.length > 5) verb.syllables++
+      }
+      return this.noun().add(verb)
     }
   }
 
@@ -97,6 +106,10 @@ class Haiku {
 
   adjective() {
     return randomWord(adjective)
+  }
+
+  verb() {
+    return randomWord(verb)
   }
 }
 
