@@ -2,8 +2,8 @@
   "name": "haiku-generator",
   "version": "0.0.1",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --config webpack.dev.js"
+    "build": "webpack --config webpack/prod.js",
+    "start": "webpack-dev-server --config webpack/dev.js"
   },
   "repository": {
     "type": "git",

@@ -2,13 +2,15 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 
+const base = path.resolve(__dirname, '..')
+
 module.exports = {
   entry: [
-    path.resolve(__dirname, 'js/main.js'),
-    path.resolve(__dirname, 'css/main.css')
+    path.resolve(base, 'js/main.js'),
+    path.resolve(base, 'css/main.css')
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(base, 'dist'),
     filename: 'bundle.js'
   },
   module: {
