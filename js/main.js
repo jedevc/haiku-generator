@@ -33,6 +33,9 @@ window.onload = () => {
 
   update()
   destination.addEventListener('click', update)
+  window.addEventListener('keyup', e => {
+    if (e.key == ' ' || e.key == 'Enter') update()
+  })
 }
 
 class Haiku {
