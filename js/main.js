@@ -1,6 +1,6 @@
-const noun = require('../words/nouns.txt').split('\n')
-const adjective = require('../words/adjectives.txt').split('\n')
-const verb = require('../words/verbs.txt').split('\n')
+const noun = require('../words_build/nouns.txt').split('\n')
+const adjective = require('../words_build/adjectives.txt').split('\n')
+const verb = require('../words_build/verbs.txt').split('\n')
 
 const nlp = require('compromise')
 const syllable = require('syllable')

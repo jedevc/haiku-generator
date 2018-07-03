@@ -11,8 +11,8 @@ import re
 
 def main():
     # location constants
-    indir = 'samples'
-    outdir = 'words'
+    indir = 'words'
+    outdir = 'words_build'
 
     # ensure that output directory exists
     os.makedirs(outdir, exist_ok=True)
