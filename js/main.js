@@ -60,7 +60,14 @@ class Haiku {
   }
 
   line() {
-    return this.noun()
+    const n = Math.random()
+    if (n < 0.5) {
+      return this.noun()
+    } else if (n < 0.75) {
+      return this.noun().list(this.noun())
+    } else if (n < 1) {
+      return this.noun().list(this.noun().list(this.noun()))
+    }
   }
 
   noun() {
@@ -126,6 +133,11 @@ class Text {
 
   add(other) {
     return new Text(this.text + ' ' + other.text,
+                    this.syllables + other.syllables)
+  }
+
+  list(other) {
+    return new Text(this.text + ', ' + other.text,
                     this.syllables + other.syllables)
   }
 }
