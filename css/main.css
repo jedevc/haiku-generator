@@ -10,7 +10,7 @@ body {
   align-items: center;
 }
 
-#main {
+#haiku {
   text-align: center;
   font-size: 3em;
   font-family: cursive;
@@ -19,11 +19,11 @@ body {
   transition: opacity 0.4s;
 }
 
-#main.hidden {
+#haiku.hidden {
   opacity: 0;
 }
 
-#main .line::first-letter {
+#haiku .line::first-letter {
   font-size: 140%;
 }
 

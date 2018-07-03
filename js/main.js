@@ -5,13 +5,14 @@ const nlp = require('compromise')
 
 window.onload = () => {
   let haiku = new Haiku()
-  let main = document.getElementById('main')
+
+  let destination = document.getElementById('haiku')
 
   function update() {
-    main.addEventListener('transitionend', () => {
+    destination.addEventListener('transitionend', () => {
       // remove existing lines
-      while (main.firstChild) {
-        main.removeChild(main.firstChild)
+      while (destination.firstChild) {
+        destination.removeChild(destination.firstChild)
       }
 
       // add lines
@@ -22,16 +23,16 @@ window.onload = () => {
         let text = document.createTextNode(line)
         span.appendChild(text)
 
-        main.appendChild(span)
+        destination.appendChild(span)
       }
 
-      main.classList.remove('hidden')
+      destination.classList.remove('hidden')
     }, { once: true})
-    main.classList.add('hidden')
+    destination.classList.add('hidden')
   }
 
   update()
-  main.addEventListener('click', update)
+  destination.addEventListener('click', update)
 }
 
 class Haiku {
