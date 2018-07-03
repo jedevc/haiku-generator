@@ -8,22 +8,24 @@ from nltk.corpus.reader.wordnet import WordNetError
 import re
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('files', type=open, nargs='+')
-    parser.add_argument('-o', '--out', default='words')
-    args = parser.parse_args()
+    # location constants
+    indir = 'samples'
+    outdir = 'words'
 
-    os.makedirs(args.out, exist_ok=True)
+    # ensure that output directory exists
+    os.makedirs(outdir, exist_ok=True)
 
-    for infile in args.files:
-        instructions = [line.strip() for line in infile]
+    for basename in os.listdir(indir):
+        # read in instructions
+        with open(os.path.join(indir, basename)) as infile:
+            instructions = [line.strip() for line in infile]
 
+        # process instructions
         proc = Processor()
         result = proc.process(instructions)
 
-        basename = os.path.basename(infile.name)
-        filename = os.path.join(args.out, basename)
-        with open(filename, 'w') as outfile:
+        # print out results
+        with open(os.path.join(outdir, basename), 'w') as outfile:
             for word in result:
                 print(word, file=outfile)
 
