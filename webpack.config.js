@@ -2,7 +2,10 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'js/main.js'),
+  entry: [
+    path.resolve(__dirname, 'js/main.js'),
+    path.resolve(__dirname, 'css/main.css')
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -10,8 +13,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.txt/,
+        test: /\.txt$/,
         use: 'raw-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
