@@ -31,7 +31,7 @@ window.onload = () => {
   }
 
   update()
-  document.addEventListener('click', update)
+  main.addEventListener('click', update)
 }
 
 class Haiku {
