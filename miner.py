@@ -25,7 +25,7 @@ def main():
         filename = os.path.join(args.out, basename)
         with open(filename, 'w') as outfile:
             for word in result:
-                print(word, syllables(word), file=outfile)
+                print(word, file=outfile)
 
 class Processor:
     def __init__(self):
@@ -84,20 +84,6 @@ class Processor:
             return wn.ADJ
         else:
             return None
-
-pronunciations = nltk.corpus.cmudict.dict()
-def syllables(phrase):
-    count = 0
-
-    words = nltk.word_tokenize(phrase)
-    for word in words:
-        try:
-            pron = pronunciations[word][0]
-            count += len([l for l in pron if l[0] in 'AEIOU'])
-        except KeyError:
-            count += len([p for p in re.split('[aeiou]', word) if p])
-
-    return count
 
 if __name__ == "__main__":
     main()

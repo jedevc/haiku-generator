@@ -3,6 +3,7 @@ const adjective = require('../words/adjectives.txt').split('\n')
 const verb = require('../words/verbs.txt').split('\n')
 
 const nlp = require('compromise')
+const syllable = require('syllable')
 
 window.onload = () => {
   let haiku = new Haiku()
@@ -55,9 +56,9 @@ class Haiku {
     let ln
     do {
       ln = this.line()
-    } while (ln.syllables != syllables)
+    } while (syllable(ln) != syllables)
 
-    return ln.text[0].toUpperCase() + ln.text.slice(1)
+    return ln[0].toUpperCase() + ln.slice(1)
   }
 
   line() {
@@ -65,36 +66,35 @@ class Haiku {
     if (n < 0.3) {
       return this.noun()
     } else if (n < 0.4) {
-      return this.noun().list(this.noun())
+      return this.noun() + ', ' + this.noun()
     } else if (n < 0.5) {
-      return this.noun().list(this.noun().list(this.noun()))
+      return this.noun() + ', ' + this.noun() + ', ' + this.noun()
     } else if (n < 1) {
       let verb = this.verb()
-      let past = nlp(verb.text).verbs().toPastTense().out('text')
-      if (past) {
-        verb.text = past
-        if (verb.text.length > 5) verb.syllables++
-      }
-      return this.noun().add(verb)
+
+      let past = nlp(verb).verbs().toPastTense().out('text')
+      if (past) verb = past
+
+      return this.noun() + ' ' + verb
     }
   }
 
   noun() {
-    let base = randomWord(noun)
+    let base = randomChoice(noun)
     if (Math.random() < 0.4) {
-      base = this.adjective().add(base)
+      base = this.adjective() + ' ' + base
     }
 
     const n = Math.random()
     if (n < 0.25) {
-      return new Text('the').add(base)
+      return 'the ' + base
     } else if (n < 0.5) {
       try {
         const article = nlp(base.text).nouns().articles()[0].article
-        return new Text(article).add(base)
+        return article + ' ' + base
       } catch (e) {
         if (e instanceof TypeError) {
-          return new Text('the').add(base)
+          return 'the ' + base
         } else {
           throw e
         }
@@ -105,52 +105,15 @@ class Haiku {
   }
 
   adjective() {
-    return randomWord(adjective)
+    return randomChoice(adjective)
   }
 
   verb() {
-    return randomWord(verb)
+    return randomChoice(verb)
   }
 }
 
 function randomChoice(array) {
   const index = Math.floor(Math.random() * array.length)
   return array[index]
-}
-
-function randomWord(array, repeat=true) {
-  while (repeat) {
-    const choice = randomChoice(array)
-    const parts = choice.split(' ')
-    if (parts.length == 2) {
-      return new Text(parts[0], Number(parts[1]))
-    }
-  }
-
-  return null
-}
-
-class Text {
-  constructor(text, syllables=null) {
-    this.text = text
-
-    if (syllables == null) {
-      // simple cheat syllable count
-      this.syllables = text.split(/[ aeiou]/)
-                           .filter(s => s.length != 0)
-                           .length
-    } else {
-      this.syllables = syllables
-    }
-  }
-
-  add(other) {
-    return new Text(this.text + ' ' + other.text,
-                    this.syllables + other.syllables)
-  }
-
-  list(other) {
-    return new Text(this.text + ', ' + other.text,
-                    this.syllables + other.syllables)
-  }
 }
