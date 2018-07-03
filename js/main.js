@@ -5,8 +5,16 @@ const nlp = require('compromise')
 
 window.onload = () => {
   let haiku = new Haiku()
-  for (let i = 0; i < 20; i++) {
-    console.log(haiku.generate())
+
+  let main = document.getElementById('main')
+
+  for (let line of haiku.generate()) {
+    let span = document.createElement('div')
+    span.classList.add('line')
+    let text = document.createTextNode(line)
+    span.appendChild(text)
+
+    main.appendChild(span)
   }
 }
 
@@ -19,7 +27,7 @@ class Haiku {
       this.part(5),
       this.part(7),
       this.part(5)
-    ].join('\n')
+    ]
   }
 
   part(syllables) {
