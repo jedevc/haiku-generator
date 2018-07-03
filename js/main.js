@@ -27,7 +27,7 @@ class Haiku {
     do {
       ln = this.line()
     } while (ln.syllables != syllables)
-    return ln.word
+    return ln.text
   }
 
   line() {
@@ -42,14 +42,14 @@ class Haiku {
 
     const n = Math.random()
     if (n < 0.25) {
-      return new Word('the').add(base)
+      return new Text('the').add(base)
     } else if (n < 0.5) {
       try {
-        const article = nlp(base.word).nouns().articles()[0].article
-        return new Word(article).add(base)
+        const article = nlp(base.text).nouns().articles()[0].article
+        return new Text(article).add(base)
       } catch (e) {
         if (e instanceof TypeError) {
-          return new Word('the').add(base)
+          return new Text('the').add(base)
         } else {
           throw e
         }
@@ -74,20 +74,20 @@ function randomWord(array, repeat=true) {
     const choice = randomChoice(array)
     const parts = choice.split(' ')
     if (parts.length == 2) {
-      return new Word(parts[0], Number(parts[1]))
+      return new Text(parts[0], Number(parts[1]))
     }
   }
 
   return null
 }
 
-class Word {
-  constructor(word, syllables=null) {
-    this.word = word
+class Text {
+  constructor(text, syllables=null) {
+    this.text = text
 
     if (syllables == null) {
       // simple cheat syllable count
-      this.syllables = word.split(/[ aeiou]/)
+      this.syllables = text.split(/[ aeiou]/)
                            .filter(s => s.length != 0)
                            .length
     } else {
@@ -96,7 +96,7 @@ class Word {
   }
 
   add(other) {
-    return new Word(this.word + ' ' + other.word,
+    return new Text(this.text + ' ' + other.text,
                     this.syllables + other.syllables)
   }
 }
