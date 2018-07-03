@@ -21,5 +21,9 @@ module.exports = {
       inject: 'body'
     })
   ],
-  mode: 'development'
+  mode: 'development',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true
+  }
 }
