@@ -8,25 +8,30 @@ window.onload = () => {
   let main = document.getElementById('main')
 
   function update() {
-    // remove existing lines
-    while (main.firstChild) {
-      main.removeChild(main.firstChild)
-    }
+    main.addEventListener('transitionend', () => {
+      // remove existing lines
+      while (main.firstChild) {
+        main.removeChild(main.firstChild)
+      }
 
-    // add lines
-    const lines = haiku.generate()
-    for (let line of lines) {
-      let span = document.createElement('div')
-      span.classList.add('line')
-      let text = document.createTextNode(line)
-      span.appendChild(text)
+      // add lines
+      const lines = haiku.generate()
+      for (let line of lines) {
+        let span = document.createElement('div')
+        span.classList.add('line')
+        let text = document.createTextNode(line)
+        span.appendChild(text)
 
-      main.appendChild(span)
-    }
+        main.appendChild(span)
+      }
+
+      main.classList.remove('hidden')
+    }, { once: true})
+    main.classList.add('hidden')
   }
 
   update()
-  document.onclick = update
+  document.addEventListener('click', update)
 }
 
 class Haiku {
