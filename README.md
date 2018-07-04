@@ -2,8 +2,14 @@
 
 Randomly generate haikus!
 
-This project is still in active development, so don't expect it to generate
-incredible results just yet.
+This is just a fun project that I created to play around with Natural Language
+Processing and Generation techniques. The haikus that it generates should be at
+the very least grammatically accurate, however, having the results actually be
+semantically accurate is much more difficult and wasn't really one of the
+goals.
+
+You can access an online version of the site
+[here](https://jedevc.github.io/haiku-generator/).
 
 ## Building
 
