@@ -11,7 +11,19 @@ module.exports = {
   ],
   output: {
     path: path.resolve(base, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].[chunkhash].js'
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -34,7 +46,7 @@ module.exports = {
       inject: 'body'
     }),
     new MiniCSSExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[contenthash].css'
     })
   ]
 }
