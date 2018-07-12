@@ -85,6 +85,10 @@ class Haiku {
       base = randomChoice(noun)
     } while (base.length == 0)
 
+    if (Math.random() < 0.3) {
+      base = nlp(base).nouns(0).toPlural().out('text')
+    }
+
     if (Math.random() < 0.4) {
       base = this.adjective() + ' ' + base
     }
@@ -94,7 +98,7 @@ class Haiku {
       return 'the ' + base
     } else if (n < 0.5) {
       try {
-        const article = nlp(base.text).nouns().articles()[0].article
+        const article = nlp(base).nouns().articles()[0].article
         return article + ' ' + base
       } catch (e) {
         if (e instanceof TypeError) {
