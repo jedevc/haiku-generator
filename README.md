@@ -13,15 +13,6 @@ You can access an online version of the site
 
 ## Building
 
-The build process for the project is split into two parts:
-
-1. Generate the word lists using python and nltk
-
-		$ pip install -r requirements.txt
-		$ ./miner
-
-2. Create the web page
-
 		$ npm install
 		$ npm run build
 
