@@ -8,15 +8,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: lightyellow;
 }
 
 #haiku {
+  padding: 1em;
+  border: 2px solid black;
+
   text-align: center;
   font-size: 3em;
   font-family: cursive;
 
   opacity: 1;
   transition: opacity 0.4s;
+
+  background-color: bisque;
 }
 
 #haiku.hidden {
