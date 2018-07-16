@@ -7,9 +7,9 @@ const syllable = require('syllable')
 
 window.onload = () => {
   let haiku = new Haiku()
-
   let destination = document.getElementById('haiku')
 
+  // display a randomly generated haiku
   function update() {
     destination.addEventListener('transitionend', () => {
       // remove existing lines
@@ -32,8 +32,9 @@ window.onload = () => {
     }, { once: true})
     destination.classList.add('hidden')
   }
-
   update()
+
+  // add event listeners
   destination.addEventListener('click', update)
   window.addEventListener('keyup', e => {
     if (e.key == ' ' || e.key == 'Enter') update()
@@ -41,9 +42,6 @@ window.onload = () => {
 }
 
 class Haiku {
-  constructor() {
-  }
-
   generate() {
     return [
       this.part(5),
