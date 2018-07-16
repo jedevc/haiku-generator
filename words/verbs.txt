@@ -1,11 +1,24 @@
+come
 move
 walk
 run
 dance
 spin
+jump
+quiver
+
+enter
+leave
+start
+stop
+begin
+end
 
 help
 assist
+
+beg
+earn
 
 relax
 rest
@@ -15,14 +28,22 @@ work
 watch
 see
 examine
+think
 
+say
 speak
 express
 call
 whisper
 shout
 sing
+howl
+rumble
 clap
 snap
 
 grow
+persue
+hunt
+gather
+deliver

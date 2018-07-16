@@ -3,6 +3,17 @@ elegant
 precious
 refined
 perfect
+lovely
+fine
+rich
+golden
+silver
+lavish
+
+poor
+dirt
+rotten
+crude
 
 gentle
 smooth
@@ -11,6 +22,8 @@ clear
 calm
 crystal
 
+heavy
+
 bright
 light
 dark
@@ -18,6 +31,7 @@ dim
 
 full
 empty
+half-full
 
 quiet
 silent
@@ -37,7 +51,9 @@ flowing
 
 old
 aged
+ancient
 young
+youthful
 
 tiny
 small

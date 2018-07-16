@@ -5,20 +5,25 @@ autumn
 fall
 winter
 
-sun
-daylight
-moon
-moonlight
+day
+night
 dawn
 morning
 noon
 afternoon
 evening
 dusk
-night
+
+sun
+sunbeams
+light
+daylight
+moon
+moonlight
 
 warmth
 chill
+breeze
 
 nature
 flora
@@ -30,6 +35,9 @@ frog
 fish
 koi
 goldfish
+chicks
+cat
+dog
 
 desert
 mountain
@@ -47,6 +55,9 @@ lake
 river
 stream
 
+rock
+boulder
+
 plantlife
 plant
 leaf
@@ -60,6 +71,19 @@ oak
 apple
 strawberry
 cherry-blossom
+
+bread
+potato
+cherry
+apple
+orange
+
+human
+child
+parent
+hunter
+farmer
+worker
 
 farm
 factory
