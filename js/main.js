@@ -1,6 +1,4 @@
-const noun = require('../words/nouns.txt').split('\n')
-const adjective = require('../words/adjectives.txt').split('\n')
-const verb = require('../words/verbs.txt').split('\n')
+const words = require('./words')
 
 const nlp = require('compromise')
 const syllable = require('syllable')
@@ -78,10 +76,7 @@ class Haiku {
   }
 
   noun() {
-    let base
-    do {
-      base = randomChoice(noun)
-    } while (base.length == 0)
+    let base = randomChoice(words.noun)
 
     if (Math.random() < 0.3) {
       base = nlp(base).nouns(0).toPlural().out('text')
@@ -111,19 +106,11 @@ class Haiku {
   }
 
   adjective() {
-    let base
-    do {
-      base = randomChoice(adjective)
-    } while (base.length == 0)
-    return base
+    return randomChoice(words.adjective)
   }
 
   verb() {
-    let base
-    do {
-      base = randomChoice(verb)
-    } while (base.length == 0)
-    return base
+    return randomChoice(words.verb)
   }
 }
 
